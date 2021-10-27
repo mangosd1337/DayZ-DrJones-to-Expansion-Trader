@@ -1,5 +1,7 @@
 # DayZ-DrJones-to-Expansion-Trader
 
+## Work in Progress!
+
 Just drag and drop a Trader-File that was made for Dr Jones Trader mod on the build .exe and it spits out a (still completely meme) Expansion Market usable .json. Or atleast i assume so.
 
 ![Dr Jones Config in](https://share.wildbook.me/rHgBcingktDASk7N.png)
