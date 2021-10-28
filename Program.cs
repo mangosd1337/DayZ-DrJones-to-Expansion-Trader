@@ -36,8 +36,8 @@ namespace DayZ_DrJonesToExpansionMarket
                     MinPriceThreshold = int.Parse(itemValues[2]),
                     MinStockThreshold = 1,
                     PurchaseType = 0,
-                    SpawnAttachments = new List<object>(),
-                    Variants = new List<object>()
+                    SpawnAttachments = new List<string>(),
+                    Variants = new List<string>()
                 });
             }
 
