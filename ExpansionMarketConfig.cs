@@ -40,9 +40,9 @@ namespace DayZ_DrJonesToExpansionMarket
         public long? PurchaseType { get; set; }
 
         [JsonProperty("SpawnAttachments", NullValueHandling = NullValueHandling.Ignore)]
-        public List<object> SpawnAttachments { get; set; }
+        public List<string> SpawnAttachments { get; set; }
 
         [JsonProperty("Variants", NullValueHandling = NullValueHandling.Ignore)]
-        public List<object> Variants { get; set; }
+        public List<string> Variants { get; set; }
     }
 }
