@@ -14,6 +14,10 @@ namespace DayZ_DrJonesToExpansionMarket
             var inputFileContent = await File.ReadAllLinesAsync(pathToInputFile);
 
             var items = new List<Item>();
+            var trader = new ExpansionTraderConfig
+            {
+                Items = new Dictionary<string, long>()
+            };
 
             foreach (var line in inputFileContent)
             {
@@ -39,16 +43,30 @@ namespace DayZ_DrJonesToExpansionMarket
                     SpawnAttachments = new List<string>(),
                     Variants = new List<string>()
                 });
+
+                trader.Items.Add($"{itemValues[0]}", 1);
             }
 
-            var export = new ExpansionMarketConfig
+            var exportMarketConfig = new ExpansionMarketConfig
             {
                 DisplayName = $"expansion_{Path.GetFileNameWithoutExtension(args[0])}",
                 Items = items,
                 MVersion = 4
             };
 
-            await File.WriteAllTextAsync($"expansion_{Path.GetFileNameWithoutExtension(args[0])}.json", JsonConvert.SerializeObject(export, Formatting.Indented));
+            var exportTraderConfig = new ExpansionTraderConfig
+            {
+                MVersion = 7,
+                TraderName = "REPLACE ME",
+                DisplayName = $"expansion_{Path.GetFileNameWithoutExtension(args[0])}",
+                TraderIcon = "REPLACE ME",
+                Currencies = new List<string>(),
+                Categories = new List<object>(),
+                Items = trader.Items
+            };
+
+            await File.WriteAllTextAsync($"expansionMarketConfig_{Path.GetFileNameWithoutExtension(args[0])}.json", JsonConvert.SerializeObject(exportMarketConfig, Formatting.Indented));
+            await File.WriteAllTextAsync($"expansionTraderConfig_{Path.GetFileNameWithoutExtension(args[0])}.json", JsonConvert.SerializeObject(exportTraderConfig, Formatting.Indented));
         }
     }
 }
