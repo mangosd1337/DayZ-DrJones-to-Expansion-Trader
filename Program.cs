@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -18,6 +21,7 @@ namespace DayZ_DrJonesToExpansionMarket
             {
                 Items = new Dictionary<string, long>()
             };
+
 
             foreach (var line in inputFileContent)
             {
@@ -44,6 +48,7 @@ namespace DayZ_DrJonesToExpansionMarket
                     Variants = new List<string>()
                 });
 
+                if (trader.Items.Keys.Contains($"{itemValues[0]}")) continue;
                 trader.Items.Add($"{itemValues[0]}", 1);
             }
 
